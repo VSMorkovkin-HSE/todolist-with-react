@@ -1,8 +1,25 @@
-import React from 'react'
+import React, {useState} from 'react'
+import {v4} from 'uuid'
 
-function AddTask() {
+function AddTask({todo, setTodo}) {
+
+    const [value, setValue] = useState('')
+
+    function saveTodo() {
+        let newTodo = [...todo, {
+            id: v4(),
+            title: value,
+            status: true
+        }]
+        setTodo(newTodo)
+        setValue('')
+    }
+
     return (
-        <div>Form</div>
+        <div>
+            <input placeholder='введите задачу' value={value} onChange={ (e) => setValue(e.target.value)}/>
+            <button onClick={saveTodo}>сохранить</button>
+        </div>
     )
 }
 

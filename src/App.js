@@ -27,7 +27,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <AddTask />
+      <AddTask todo={todo} setTodo={setTodo}/>
       <TaskList todo={todo} setTodo={setTodo} />
     </div>
   );
