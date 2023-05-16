@@ -1,4 +1,9 @@
 import React, {useState} from "react"
+import Icon from '@mdi/react';
+import { mdiCheckboxBlankCircleOutline } from '@mdi/js';
+import { mdiCheckboxMarkedCircle } from '@mdi/js';
+import { mdiPencilOutline } from '@mdi/js';
+import { mdiTrashCanOutline } from '@mdi/js';
 
 function TaskList({ todo, setTodo }) {
 
@@ -49,10 +54,21 @@ function TaskList({ todo, setTodo }) {
                                 </div>
                             :
                                 <div>
-                                    <button onClick={ () => statusTodo(item.id) }>закрыть/открыть</button>
+                                    <button onClick={ () => statusTodo(item.id) }>
+                                        {
+                                            item.status ?
+                                                <Icon path={mdiCheckboxBlankCircleOutline} size={1} />
+                                            :
+                                                <Icon path={mdiCheckboxMarkedCircle} size={1} />
+                                        }
+                                    </button>
                                     <div>{ item.title }</div>
-                                    <button onClick={ () => editTodo(item.id, item.title) }>редактировать</button>
-                                    <button onClick={ () => deleteTodo(item.id) }>удалить</button>
+                                    <button onClick={ () => editTodo(item.id, item.title) }>
+                                        <Icon path={mdiPencilOutline} size={1} />
+                                    </button>
+                                    <button onClick={ () => deleteTodo(item.id) }>
+                                        <Icon path={mdiTrashCanOutline} size={1} />
+                                    </button>
                                 </div>       
                         } 
                     </div>

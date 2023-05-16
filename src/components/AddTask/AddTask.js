@@ -6,6 +6,8 @@ function AddTask({todo, setTodo}) {
     const [value, setValue] = useState('')
 
     function saveTodo() {
+        if (value === '') return
+
         let newTodo = [...todo, {
             id: v4(),
             title: value,
