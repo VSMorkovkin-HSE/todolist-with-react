@@ -2,8 +2,9 @@
     height: 80px;
     font-size: 24px;
     color: white;
-    background: gray;
+    background: #2564cf;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 24px;
 }

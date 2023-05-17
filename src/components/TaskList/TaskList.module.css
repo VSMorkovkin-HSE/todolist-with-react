@@ -1,0 +1,60 @@
+.task {
+    background-color: #ffffff;
+    margin-top: 12px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+}
+
+.task:hover {
+    background-color: gainsboro;
+    border-radius: 6px;
+}
+
+.formControl {
+    margin-right: 12px;
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+}
+
+.status {
+    color: #2564cf;
+}
+
+.change {
+    color: gray;
+}
+
+.change:hover {
+    color: #2564cf;
+}
+
+.delete {
+    color: gray;
+}
+
+.delete:hover {
+    color: #FF4144;
+}
+
+.taskItems {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px;
+}
+
+.taskName {
+    flex-grow: 1;
+    margin-left: 6px;
+}
+
+.taskNameClose {
+    flex-grow: 1;
+    margin-left: 6px;
+    text-decoration: line-through;
+    color: gray;
+}

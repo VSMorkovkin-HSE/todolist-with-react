@@ -4,6 +4,8 @@ import { mdiCheckboxBlankCircleOutline } from '@mdi/js';
 import { mdiCheckboxMarkedCircle } from '@mdi/js';
 import { mdiPencilOutline } from '@mdi/js';
 import { mdiTrashCanOutline } from '@mdi/js';
+import { Button, FormControl } from 'react-bootstrap'
+import s from './TaskList.module.css';
 
 function TaskList({ todo, setTodo }) {
 
@@ -45,29 +47,35 @@ function TaskList({ todo, setTodo }) {
         <div>
             {
                 todo.map( item => (
-                    <div key={item.id}>
+                    <div className={s.task} key={item.id}>
                         {
                             edit === item.id ?
-                                <div>
-                                    <input onChange={ (e) => setValue(e.target.value) } value={value}/> 
-                                    <button onClick={ () => saveTodo(item.id) }>сохранить</button>
+                                // change task items
+                                <div className={s.taskItems}>
+                                    <FormControl className={s.formControl} 
+                                        onChange={ (e) => setValue(e.target.value) } 
+                                        value={value}
+                                        onKeyDown={ (e) => { if (e.key === 'Enter') saveTodo(item.id) }}
+                                    /> 
+                                    <Button className={s.btn} variant="outline-primary" onClick={ () => saveTodo(item.id) }>сохранить</Button>
                                 </div>
                             :
-                                <div>
-                                    <button onClick={ () => statusTodo(item.id) }>
+                                // display task items
+                                <div className={s.taskItems} >
+                                    <button className={s.btn} onClick={ () => statusTodo(item.id) }>
                                         {
                                             item.status ?
-                                                <Icon path={mdiCheckboxBlankCircleOutline} size={1} />
+                                                <Icon className={s.status} path={mdiCheckboxBlankCircleOutline} size={0.75} />
                                             :
-                                                <Icon path={mdiCheckboxMarkedCircle} size={1} />
+                                                <Icon className={s.status} path={mdiCheckboxMarkedCircle} size={0.75} />
                                         }
                                     </button>
-                                    <div>{ item.title }</div>
-                                    <button onClick={ () => editTodo(item.id, item.title) }>
-                                        <Icon path={mdiPencilOutline} size={1} />
+                                    <div className={ !item.status ? s.taskNameClose : s.taskName}>{ item.title }</div>
+                                    <button className={s.btn} onClick={ () => editTodo(item.id, item.title) }>
+                                        <Icon className={s.change} path={mdiPencilOutline} size={1} />
                                     </button>
-                                    <button onClick={ () => deleteTodo(item.id) }>
-                                        <Icon path={mdiTrashCanOutline} size={1} />
+                                    <button className={s.btn} onClick={ () => deleteTodo(item.id) }>
+                                        <Icon className={s.delete} path={mdiTrashCanOutline} size={1} />
                                     </button>
                                 </div>       
                         } 
